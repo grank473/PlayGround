@@ -1,0 +1,11 @@
+{
+  "name": "hello-greeting-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "你好 — a small, warm static greeting site.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs"
+  }
+}

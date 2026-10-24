@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="你好，一场关于问候、连接与好奇心的温柔相遇。" />
+  <meta name="theme-color" content="#101726" />
+  <title>你好 · 一场温柔的相遇</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff7a59'/%3E%3Ctext x='32' y='42' font-size='30' text-anchor='middle' fill='%23fff6ec'%3E你%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="glow glow-a" aria-hidden="true"></div>
+  <div class="glow glow-b" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="你好，返回首页">
+      <span class="brand-mark" aria-hidden="true">你</span>
+      <span class="brand-text">你好<span class="brand-dot">。</span></span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#greetings">问候</a>
+      <a href="#today">今日</a>
+      <a href="#about">关于</a>
+    </nav>
+    <a class="nav-cta" href="#today">说声你好 <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> 给世界的一声问候</p>
+        <h1 class="hero-title">
+          <span class="hero-cn">你好</span>
+          <span class="hero-en">Hello, world.<br />A small word, a wide welcome.</span>
+        </h1>
+        <p class="hero-lede">
+          一句「你好」，是目光相遇时的微笑，是跨越语言的第一座桥。
+          在这里，收集世界各地温柔的问候，也把今天的第一声你好，留给正在读这句话的你。
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" type="button" id="greetBtn">
+            <span class="btn-icon" aria-hidden="true">✦</span>
+            <span id="greetLabel">向今天说声你好</span>
+          </button>
+          <a class="btn btn-ghost" href="#greetings">看看世界的问候 <span aria-hidden="true">↓</span></a>
+        </div>
+        <dl class="hero-stats" aria-label="问候小统计">
+          <div>
+            <dt>语言</dt>
+            <dd>12<span>+</span></dd>
+          </div>
+          <div>
+            <dt>时区</dt>
+            <dd>24<span>h</span></dd>
+          </div>
+          <div>
+            <dt>微笑</dt>
+            <dd>∞</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="orb orb-back"></div>
+        <div class="orb orb-mid"></div>
+        <div class="hero-card">
+          <div class="card-top">
+            <span class="card-day" id="cardDay">星期六</span>
+            <span class="card-time" id="cardTime">10:24</span>
+          </div>
+          <div class="card-glyph">你<span>好</span></div>
+          <p class="card-note">愿你今天遇见的风，<br />都带着一点温柔。</p>
+          <div class="card-row">
+            <span class="tag">此刻</span>
+            <span class="tag tag-outline">与你同在</span>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+        <span class="float-word float-a">Hola</span>
+        <span class="float-word float-b">Bonjour</span>
+        <span class="float-word float-c">こんにちは</span>
+        <span class="float-word float-d">안녕하세요</span>
+      </div>
+    </section>
+
+    <section class="greetings" id="greetings">
+      <div class="section-head">
+        <p class="eyebrow">Around the world</p>
+        <h2>世界各地的「你好」</h2>
+        <p>同一个心意，被不同的声音轻轻说出。把鼠标停在卡片上，听一听它们的语气。</p>
+      </div>
+      <div class="greeting-grid" id="greetingGrid">
+        <article class="greeting-card" style="--delay: 0ms">
+          <span class="g-index">01</span>
+          <h3 lang="zh">你好</h3>
+          <p class="g-lang">中文 · 普通话</p>
+          <p class="g-phonetic">nǐ hǎo</p>
+          <p class="g-meaning">你，好吗？愿一切都好。</p>
+        </article>
+        <article class="greeting-card" style="--delay: 60ms">
+          <span class="g-index">02</span>
+          <h3 lang="en">Hello</h3>
+          <p class="g-lang">English</p>
+          <p class="g-phonetic">/həˈləʊ/</p>
+          <p class="g-meaning">一声轻快的招呼，打开一段对话。</p>
+        </article>
+        <article class="greeting-card" style="--delay: 120ms">
+          <span class="g-index">03</span>
+          <h3 lang="ja">こんにちは</h3>
+          <p class="g-lang">日本語</p>
+          <p class="g-phonetic">konnichiwa</p>
+          <p class="g-meaning">愿这个午后，有光落在你肩上。</p>
+        </article>
+        <article class="greeting-card" style="--delay: 180ms">
+          <span class="g-index">04</span>
+          <h3 lang="ko">안녕하세요</h3>
+          <p class="g-lang">한국어</p>
+          <p class="g-phonetic">annyeonghaseyo</p>
+          <p class="g-meaning">带着敬意的问候，安稳又真诚。</p>
+        </article>
+        <article class="greeting-card" style="--delay: 240ms">
+          <span class="g-index">05</span>
+          <h3 lang="es">Hola</h3>
+          <p class="g-lang">Español</p>
+          <p class="g-phonetic">/ˈola/</p>
+          <p class="g-meaning">短促、明亮，像一次热情的挥手。</p>
+        </article>
+        <article class="greeting-card" style="--delay: 300ms">
+          <span class="g-index">06</span>
+          <h3 lang="fr">Bonjour</h3>
+          <p class="g-lang">Français</p>
+          <p class="g-phonetic">/bɔ̃.ʒuʁ/</p>
+          <p class="g-meaning">把「好的一天」送给刚刚遇见的你。</p>
+        </article>
+        <article class="greeting-card" style="--delay: 360ms">
+          <span class="g-index">07</span>
+          <h3 lang="ar" dir="rtl">مرحبا</h3>
+          <p class="g-lang">العربية</p>
+          <p class="g-phonetic">marhaban</p>
+          <p class="g-meaning">欢迎你，这里有一席之地。</p>
+        </article>
+        <article class="greeting-card" style="--delay: 420ms">
+          <span class="g-index">08</span>
+          <h3 lang="sw">Jambo</h3>
+          <p class="g-lang">Kiswahili</p>
+          <p class="g-phonetic">/ˈdʒambo/</p>
+          <p class="g-meaning">嘿，朋友，今天也一起向前。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="today" id="today">
+      <div class="today-card">
+        <div class="today-copy">
+          <p class="eyebrow">A moment for you</p>
+          <h2>今天，想对谁说声你好？</h2>
+          <p>
+            问候不需要盛大的理由。选一位此刻想起的人，让一句简单的话，
+            替你把距离缩短一点。
+          </p>
+          <div class="chips" role="group" aria-label="选择问候对象">
+            <button class="chip is-active" type="button" data-greet="一位老朋友">老朋友</button>
+            <button class="chip" type="button" data-greet="家人">家人</button>
+            <button class="chip" type="button" data-greet="身边的同事">同事</button>
+            <button class="chip" type="button" data-greet="镜子里的自己">自己</button>
+          </div>
+          <button class="btn btn-primary" type="button" id="warmBtn">生成一句问候</button>
+        </div>
+        <div class="note-card" id="noteCard">
+          <div class="note-pin" aria-hidden="true"></div>
+          <p class="note-kicker">TO：一位老朋友</p>
+          <p class="note-text" id="noteText">好久不见。今天的天气很好，忽然想起你。想告诉你：我很好，也祝你一切都好。</p>
+          <p class="note-sign">—— 来自此刻的你</p>
+          <div class="note-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-grid">
+        <div class="about-lead">
+          <p class="eyebrow">Why greetings</p>
+          <h2>一句你好，<br />是善意的起点。</h2>
+        </div>
+        <div class="about-body">
+          <p>
+            「你好」很短，短到一秒就能说完；它也很长，长到能装下一次理解、
+            一段关系和一个新的开始。
+          </p>
+          <p>
+            这个小小的页面，想提醒我们：在忙碌的日常里，仍然可以为陌生人留一个微笑，
+            为远方的人留一句问候，也为自己留一点温柔。
+          </p>
+          <ul class="values">
+            <li><span>01</span> 好奇地看世界</li>
+            <li><span>02</span> 真诚地打招呼</li>
+            <li><span>03</span> 温柔地对待彼此</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-mark">你好<span>。</span></div>
+    <p>愿每一次相遇，都从一句你好开始。</p>
+    <p class="footer-meta">Made with warmth · <span id="year">2026</span></p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
