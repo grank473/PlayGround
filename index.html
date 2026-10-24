@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark" data-wallpaper="aurora">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080b14" />
+  <meta name="description" content="Orbit — 一个可自定义、支持跨设备同步的精致导航起始页。" />
+  <title>Orbit · 你的数字星图</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.4A8.5 8.5 0 0 1 9.6 3.5 8.5 8.5 0 1 0 20.5 14.4Z"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="i-panel" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M9 4v16M13.5 9.5 16 12l-2.5 2.5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.5" cy="6" r="1"/><circle cx="3.5" cy="12" r="1"/><circle cx="3.5" cy="18" r="1"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="m4 20 4.2-1 10.5-10.5a2 2 0 0 0-2.9-2.9L5.3 16.1 4 20Z"/><path d="m13.5 7.5 3 3"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l.8 13h8.4L17 7M10 11v5M14 11v5"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 .9 3.6L16.5 8l-3.6 1.4L12 13l-.9-3.6L7.5 8l3.6-1.4L12 3Z"/><path d="m18.5 14 .5 2 2 .5-2 .5-.5 2-.5-2-2-.5 2-.5.5-2ZM5 14l.6 2.4L8 17l-2.4.6L5 20l-.6-2.4L2 17l2.4-.6L5 14Z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4H9l2 2h7.5A2.5 2.5 0 0 1 21 8.5v8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 16.5v-10Z"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .7-7.9A6 6 0 0 0 6.1 9.4 4.5 4.5 0 0 0 7 18Z"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.1 9a7 7 0 0 1 11.6-2.2L20 9M4 15l2.3 2.2A7 7 0 0 0 17.9 15"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4L19 6.5"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-command" viewBox="0 0 24 24"><path d="M9 6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6Z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 2.8 8.4 7 10 4.2-1.6 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7.1A5.5 5.5 0 0 0 19.3 3 5.1 5.1 0 0 0 19.1.1S17.9-.3 15 1.7a13.4 13.4 0 0 0-6 0C6.1-.3 4.9.1 4.9.1A5.1 5.1 0 0 0 4.7 3a5.5 5.5 0 0 0-1.5 3.8c0 5.5 3.5 6.7 6.8 7.1A4.8 4.8 0 0 0 9 18v4"/><path d="M9 19c-3 .9-3-1.5-4-2"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.3" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m4 17 4.5-4.5L12 16l2.5-2.5L20 19"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="m3 3 18 18M10.6 6.1A9.7 9.7 0 0 1 12 6c6 0 9.5 6 9.5 6a17 17 0 0 1-3.1 3.8M6.6 6.7A17 17 0 0 0 2.5 12S6 18 12 18a9.6 9.6 0 0 0 4.2-.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
+    <symbol id="i-log-out" viewBox="0 0 24 24"><path d="M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5M15 8l4 4-4 4M9 12h10"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 5.6a5.1 5.1 0 0 0-7.2 0L12 7.2l-1.6-1.6a5.1 5.1 0 0 0-7.2 7.2L12 21l8.8-8.2a5.1 5.1 0 0 0 0-7.2Z"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M18 14h.01M9 14h6"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol>
+    <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5"/></symbol>
+  </svg>
+
+  <div class="wallpaper" aria-hidden="true">
+    <div class="wallpaper-base"></div>
+    <div class="wallpaper-image" id="wallpaperImage"></div>
+    <div class="wallpaper-glow"></div>
+    <div class="wallpaper-vignette"></div>
+    <div class="wallpaper-grain"></div>
+  </div>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="主导航">
+      <div class="sidebar-inner">
+        <div class="sidebar-head">
+          <button class="brand" data-action="home" aria-label="返回全部网站">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="7.2" fill="url(#brandCore)"/>
+                <ellipse cx="20" cy="20" rx="16.5" ry="7.2" transform="rotate(-28 20 20)" stroke="url(#brandRing)" stroke-width="1.5"/>
+                <ellipse cx="20" cy="20" rx="13.2" ry="5.7" transform="rotate(47 20 20)" stroke="url(#brandRing2)" stroke-width="1"/>
+                <circle cx="33.5" cy="12" r="2.2" fill="#fff"/>
+                <defs>
+                  <radialGradient id="brandCore" cx="0" cy="0" r="1" gradientTransform="translate(17 16) rotate(48) scale(14)" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset=".42" stop-color="#b9afff"/><stop offset="1" stop-color="#6c5cff"/></radialGradient>
+                  <linearGradient id="brandRing" x1="4" y1="20" x2="36" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#8d7bff" stop-opacity=".15"/><stop offset=".5" stop-color="#c6bcff"/><stop offset="1" stop-color="#53e4d2" stop-opacity=".2"/></linearGradient>
+                  <linearGradient id="brandRing2" x1="7" y1="25" x2="33" y2="15" gradientUnits="userSpaceOnUse"><stop stop-color="#59e2d1" stop-opacity=".1"/><stop offset=".5" stop-color="#8de8df"/><stop offset="1" stop-color="#9f8cff" stop-opacity=".2"/></linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <span class="brand-copy">
+              <span class="brand-name">Orbit</span>
+              <span class="brand-tagline">YOUR DIGITAL ATLAS</span>
+            </span>
+          </button>
+          <button class="icon-btn sidebar-collapse" id="sidebarCollapse" aria-label="收起侧边栏" title="收起侧边栏 (⌘B)">
+            <svg class="icon"><use href="#i-panel"/></svg>
+          </button>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="视图">
+          <button class="nav-item is-active" data-view="all">
+            <span class="nav-icon"><svg class="icon"><use href="#i-grid"/></svg></span>
+            <span class="nav-label">全部网站</span>
+            <span class="nav-count" id="navCountAll">0</span>
+          </button>
+          <button class="nav-item" data-view="favorites">
+            <span class="nav-icon"><svg class="icon"><use href="#i-star"/></svg></span>
+            <span class="nav-label">我的收藏</span>
+            <span class="nav-count" id="navCountFavorites">0</span>
+          </button>
+          <button class="nav-item" data-view="recent">
+            <span class="nav-icon"><svg class="icon"><use href="#i-clock"/></svg></span>
+            <span class="nav-label">最近访问</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-rule"></div>
+
+        <section class="sidebar-section" aria-labelledby="categoriesTitle">
+          <div class="sidebar-section-head">
+            <span id="categoriesTitle">分类</span>
+            <button class="mini-btn" id="openCategoryManager" aria-label="管理分类" title="管理分类">
+              <svg class="icon"><use href="#i-plus"/></svg>
+            </button>
+          </div>
+          <div class="category-nav" id="categoryNav"></div>
+        </section>
+
+        <div class="sidebar-spacer"></div>
+
+        <div class="sidebar-foot">
+          <button class="sync-pill" id="openSync" title="跨设备同步">
+            <span class="sync-dot"></span>
+            <span class="sync-pill-copy">
+              <strong id="syncPillTitle">本地模式</strong>
+              <small id="syncPillSub">数据已安全保存</small>
+            </span>
+            <svg class="icon sync-pill-icon"><use href="#i-cloud"/></svg>
+          </button>
+          <div class="sidebar-hint collapsed-hidden">
+            <div class="hint-keys"><kbd>⌘</kbd><kbd>K</kbd></div>
+            <span>快速搜索与跳转</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-scrim" id="sidebarScrim" aria-hidden="true"></div>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn mobile-menu" id="mobileMenu" aria-label="打开侧边栏">
+            <svg class="icon"><use href="#i-menu"/></svg>
+          </button>
+          <div class="page-heading">
+            <span class="page-eyebrow" id="pageEyebrow">COLLECTION</span>
+            <h1 id="pageTitle">全部网站</h1>
+          </div>
+        </div>
+
+        <div class="topbar-search" id="topbarSearch">
+          <svg class="icon search-icon"><use href="#i-search"/></svg>
+          <input id="searchInput" type="search" placeholder="搜索网站、标签或分类…" autocomplete="off" spellcheck="false" aria-label="搜索网站" />
+          <button class="search-clear" id="searchClear" aria-label="清空搜索" hidden><svg class="icon"><use href="#i-x"/></svg></button>
+          <button class="search-shortcut" id="openPaletteFromSearch" aria-label="打开命令面板"><kbd>⌘</kbd><kbd>K</kbd></button>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="icon-btn" id="themeToggle" aria-label="切换主题" title="切换主题">
+            <svg class="icon theme-icon-moon"><use href="#i-moon"/></svg>
+            <svg class="icon theme-icon-sun"><use href="#i-sun"/></svg>
+          </button>
+          <button class="icon-btn" id="openSettings" aria-label="个性化设置" title="个性化设置">
+            <svg class="icon"><use href="#i-settings"/></svg>
+          </button>
+          <button class="btn btn-primary add-site-btn" id="openAddSite">
+            <svg class="icon"><use href="#i-plus"/></svg>
+            <span>添加网站</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="content" id="content">
+        <section class="hero-card" aria-label="今日概览">
+          <div class="hero-noise" aria-hidden="true"></div>
+          <div class="hero-copy">
+            <div class="hero-kicker">
+              <span class="live-dot"></span>
+              <span id="greetingText">晚上好</span>
+              <span class="hero-kicker-divider"></span>
+              <span class="hero-kicker-muted" id="heroMood">愿灵感如星光降落</span>
+            </div>
+            <div class="hero-clock-row">
+              <span id="clockText">21:48</span>
+              <span class="hero-clock-note" id="clockNote">夜间</span>
+            </div>
+            <div class="hero-meta">
+              <span id="dateText">10月24日 · 星期六</span>
+              <span class="meta-dot"></span>
+              <span>在这里，收藏你的数字宇宙</span>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="stat-icon stat-icon-violet"><svg class="icon"><use href="#i-globe"/></svg></span>
+              <span class="stat-copy"><strong id="statSites">0</strong><small>网站</small></span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-icon stat-icon-mint"><svg class="icon"><use href="#i-layers"/></svg></span>
+              <span class="stat-copy"><strong id="statCategories">0</strong><small>分类</small></span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-icon stat-icon-amber"><svg class="icon"><use href="#i-star"/></svg></span>
+              <span class="stat-copy"><strong id="statFavorites">0</strong><small>收藏</small></span>
+            </div>
+          </div>
+
+          <div class="hero-orbit" aria-hidden="true">
+            <span class="orbit-ring orbit-ring-1"></span>
+            <span class="orbit-ring orbit-ring-2"></span>
+            <span class="orbit-ring orbit-ring-3"></span>
+            <span class="orbit-core"></span>
+            <span class="orbit-star orbit-star-1"></span>
+            <span class="orbit-star orbit-star-2"></span>
+            <span class="orbit-star orbit-star-3"></span>
+          </div>
+        </section>
+
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <div class="quick-filters" role="group" aria-label="快速筛选">
+              <button class="filter-chip is-active" data-view="all">全部</button>
+              <button class="filter-chip" data-view="favorites">收藏</button>
+              <button class="filter-chip" data-view="recent">最近</button>
+            </div>
+            <div class="toolbar-divider" aria-hidden="true"></div>
+            <div class="tag-filters" id="tagFilters" aria-label="标签筛选"></div>
+          </div>
+          <div class="toolbar-right">
+            <label class="sort-select" title="排序方式">
+              <svg class="icon"><use href="#i-chevron-down"/></svg>
+              <select id="sortSelect" aria-label="排序方式">
+                <option value="default">默认排序</option>
+                <option value="recent">最近访问</option>
+                <option value="name">名称排序</option>
+                <option value="visits">访问最多</option>
+              </select>
+            </label>
+            <div class="view-switch" role="group" aria-label="视图模式">
+              <button class="view-btn is-active" data-layout="grid" aria-label="网格视图" title="网格视图">
+                <svg class="icon"><use href="#i-grid"/></svg>
+              </button>
+              <button class="view-btn" data-layout="list" aria-label="列表视图" title="列表视图">
+                <svg class="icon"><use href="#i-list"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <section class="library" aria-labelledby="libraryTitle">
+          <div class="section-heading">
+            <div class="section-title-wrap">
+              <span class="section-eyebrow" id="sectionEyebrow">LIBRARY</span>
+              <h2 id="libraryTitle">全部网站 <span id="sectionCount">0</span></h2>
+            </div>
+            <div class="active-filter" id="activeFilter" hidden>
+              <span id="activeFilterText"></span>
+              <button id="clearFilter" aria-label="清除筛选"><svg class="icon"><use href="#i-x"/></svg></button>
+            </div>
+          </div>
+
+          <div class="site-grid" id="siteGrid"></div>
+
+          <div class="empty-state" id="emptyState" hidden>
+            <div class="empty-visual" aria-hidden="true">
+              <span class="empty-orbit empty-orbit-a"></span>
+              <span class="empty-orbit empty-orbit-b"></span>
+              <span class="empty-planet"></span>
+              <svg class="icon"><use href="#i-sparkles"/></svg>
+            </div>
+            <h3 id="emptyTitle">这里还是一片空白</h3>
+            <p id="emptyText">收藏第一个网站，开始构建你的数字星图。</p>
+            <button class="btn btn-primary" id="emptyAddBtn"><svg class="icon"><use href="#i-plus"/></svg><span>添加网站</span></button>
+          </div>
+        </section>
+
+        <footer class="page-footer">
+          <span class="footer-brand">ORBIT <span>© 2026</span></span>
+          <span class="footer-sep"></span>
+          <span>数据保存在本地，支持跨设备同步</span>
+          <span class="footer-sep"></span>
+          <button id="footerShortcuts"><svg class="icon"><use href="#i-keyboard"/></svg>快捷键</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <button class="fab" id="mobileAdd" aria-label="添加网站"><svg class="icon"><use href="#i-plus"/></svg></button>
+
+  <div class="modal-layer" id="siteModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="siteModal"></div>
+    <div class="modal site-modal" role="dialog" aria-modal="true" aria-labelledby="siteModalTitle">
+      <div class="modal-head">
+        <div>
+          <span class="modal-eyebrow">BOOKMARK</span>
+          <h2 id="siteModalTitle">添加网站</h2>
+        </div>
+        <button class="icon-btn" data-close="siteModal" aria-label="关闭"><svg class="icon"><use href="#i-x"/></svg></button>
+      </div>
+      <form id="siteForm" novalidate>
+        <input type="hidden" id="siteId" />
+        <div class="form-grid">
+          <div class="field">
+            <label for="siteTitle">网站名称 <span class="required">*</span></label>
+            <input id="siteTitle" name="title" type="text" placeholder="例如：Figma" autocomplete="off" maxlength="40" required />
+          </div>
+          <div class="field">
+            <label for="siteUrl">网址 <span class="required">*</span></label>
+            <div class="input-with-icon">
+              <svg class="icon"><use href="#i-globe"/></svg>
+              <input id="siteUrl" name="url" type="text" placeholder="figma.com" autocomplete="off" spellcheck="false" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="siteCategory">分类</label>
+            <div class="select-field">
+              <select id="siteCategory" name="category"></select>
+              <svg class="icon"><use href="#i-chevron-down"/></svg>
+            </div>
+          </div>
+          <div class="field">
+            <label for="siteTags">标签 <span class="optional">用逗号分隔</span></label>
+            <input id="siteTags" name="tags" type="text" placeholder="设计, 效率" autocomplete="off" maxlength="80" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="siteDesc">描述 <span class="optional">可选</span></label>
+          <textarea id="siteDesc" name="description" rows="2" maxlength="140" placeholder="用一句话记住它为什么值得收藏"></textarea>
+        </div>
+        <label class="check-row">
+          <input type="checkbox" id="siteFavorite" name="favorite" />
+          <span class="checkbox-visual"><svg class="icon"><use href="#i-check"/></svg></span>
+          <span><strong>加入收藏</strong><small>在「我的收藏」中置顶显示</small></span>
+        </label>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-ghost danger-text" id="deleteSiteBtn" hidden><svg class="icon"><use href="#i-trash"/></svg>删除</button>
+          <span class="modal-foot-spacer"></span>
+          <button type="button" class="btn btn-ghost" data-close="siteModal">取消</button>
+          <button type="submit" class="btn btn-primary" id="siteSubmitBtn">保存网站</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-layer" id="categoryModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="categoryModal"></div>
+    <div class="modal category-modal" role="dialog" aria-modal="true" aria-labelledby="categoryModalTitle">
+      <div class="modal-head">
+        <div>
+          <span class="modal-eyebrow">ORGANIZE</span>
+          <h2 id="categoryModalTitle">分类管理</h2>
+        </div>
+        <button class="icon-btn" data-close="categoryModal" aria-label="关闭"><svg class="icon"><use href="#i-x"/></svg></button>
+      </div>
+      <div class="category-manager" id="categoryManagerList"></div>
+      <div class="category-add-box">
+        <div class="category-add-head"><span>新建分类</span><small>用颜色区分你的数字领地</small></div>
+        <form id="categoryForm" class="category-form">
+          <div class="field">
+            <label for="categoryName">分类名称</label>
+            <input id="categoryName" type="text" placeholder="例如：灵感库" maxlength="20" autocomplete="off" required />
+          </div>
+          <div class="field">
+            <span class="field-label">分类颜色</span>
+            <div class="color-swatches" id="categoryColorSwatches" role="radiogroup" aria-label="分类颜色"></div>
+            <input type="hidden" id="categoryColor" value="#8b7cff" />
+          </div>
+          <button class="btn btn-primary" type="submit"><svg class="icon"><use href="#i-plus"/></svg>创建分类</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="drawer-layer" id="settingsLayer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close-drawer="settingsLayer"></div>
+    <aside class="settings-drawer" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="drawer-head">
+        <div>
+          <span class="modal-eyebrow">PERSONALIZE</span>
+          <h2 id="settingsTitle">个性化</h2>
+        </div>
+        <button class="icon-btn" data-close-drawer="settingsLayer" aria-label="关闭设置"><svg class="icon"><use href="#i-x"/></svg></button>
+      </div>
+      <div class="drawer-tabs" role="tablist" aria-label="设置分类">
+        <button class="drawer-tab is-active" data-tab="appearance" role="tab" aria-selected="true">外观</button>
+        <button class="drawer-tab" data-tab="layout" role="tab" aria-selected="false">布局</button>
+        <button class="drawer-tab" data-tab="data" role="tab" aria-selected="false">数据与同步</button>
+      </div>
+      <div class="drawer-body">
+        <section class="settings-panel is-active" data-panel="appearance">
+          <div class="setting-group">
+            <div class="setting-head"><div><h3>主题模式</h3><p>选择你喜欢的明暗氛围</p></div></div>
+            <div class="theme-options" role="radiogroup" aria-label="主题模式">
+              <button class="theme-option is-active" data-theme-value="dark"><span class="theme-swatch theme-swatch-dark"></span><span>深色</span><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="theme-option" data-theme-value="light"><span class="theme-swatch theme-swatch-light"></span><span>浅色</span><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="theme-option" data-theme-value="system"><span class="theme-swatch theme-swatch-system"></span><span>跟随系统</span><svg class="icon"><use href="#i-check"/></svg></button>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <div class="setting-head"><div><h3>氛围壁纸</h3><p>默认使用动态极光，也可以上传自己的图片</p></div></div>
+            <div class="wallpaper-presets" id="wallpaperPresets" role="radiogroup" aria-label="壁纸预设">
+              <button class="wallpaper-preset wp-aurora is-active" data-wallpaper-value="aurora" aria-label="极光"><span class="wp-thumb"></span><span>极光</span><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="wallpaper-preset wp-dusk" data-wallpaper-value="dusk" aria-label="暮色"><span class="wp-thumb"></span><span>暮色</span><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="wallpaper-preset wp-ocean" data-wallpaper-value="ocean" aria-label="深海"><span class="wp-thumb"></span><span>深海</span><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="wallpaper-preset wp-ember" data-wallpaper-value="ember" aria-label="余烬"><span class="wp-thumb"></span><span>余烬</span><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="wallpaper-preset wp-forest" data-wallpaper-value="forest" aria-label="秘境"><span class="wp-thumb"></span><span>秘境</span><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="wallpaper-preset wp-mono" data-wallpaper-value="mono" aria-label="星夜"><span class="wp-thumb"></span><span>星夜</span><svg class="icon"><use href="#i-check"/></svg></button>
+            </div>
+            <div class="custom-wallpaper">
+              <button class="btn btn-soft" id="uploadWallpaper"><svg class="icon"><use href="#i-upload"/></svg>上传图片</button>
+              <div class="url-input-inline">
+                <input id="wallpaperUrl" type="url" placeholder="或粘贴图片 URL…" aria-label="壁纸图片链接" />
+                <button class="icon-btn" id="applyWallpaperUrl" aria-label="应用图片链接" title="应用图片链接"><svg class="icon"><use href="#i-arrow-up-right"/></svg></button>
+              </div>
+            </div>
+            <div class="wallpaper-status" id="wallpaperStatus" hidden>
+              <span class="status-pulse"></span>
+              <span id="wallpaperStatusText">已使用自定义壁纸</span>
+              <button id="resetWallpaper">恢复极光</button>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <div class="setting-head"><div><h3>背景与玻璃</h3><p>调整壁纸遮罩、模糊与卡片通透度</p></div></div>
+            <label class="range-row">
+              <span>背景遮罩</span>
+              <input type="range" id="overlayRange" min="0" max="80" step="1" />
+              <output id="overlayOutput">35%</output>
+            </label>
+            <label class="range-row">
+              <span>壁纸模糊</span>
+              <input type="range" id="wallpaperBlurRange" min="0" max="24" step="1" />
+              <output id="wallpaperBlurOutput">0px</output>
+            </label>
+            <label class="range-row">
+              <span>玻璃通透度</span>
+              <input type="range" id="glassRange" min="18" max="92" step="1" />
+              <output id="glassOutput">56%</output>
+            </label>
+            <label class="range-row">
+              <span>圆角大小</span>
+              <input type="range" id="radiusRange" min="8" max="34" step="1" />
+              <output id="radiusOutput">22px</output>
+            </label>
+          </div>
+
+          <div class="setting-group">
+            <div class="setting-head"><div><h3>强调色</h3><p>点亮按钮、高光与交互反馈</p></div></div>
+            <div class="accent-options" id="accentOptions" role="radiogroup" aria-label="强调色">
+              <button class="accent-swatch is-active" data-accent="#8b7cff" style="--swatch:#8b7cff" aria-label="星紫"><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="accent-swatch" data-accent="#5ea2ff" style="--swatch:#5ea2ff" aria-label="天际蓝"><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="accent-swatch" data-accent="#42d9c8" style="--swatch:#42d9c8" aria-label="薄荷青"><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="accent-swatch" data-accent="#ff8a5b" style="--swatch:#ff8a5b" aria-label="落日橙"><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="accent-swatch" data-accent="#ff6d9a" style="--swatch:#ff6d9a" aria-label="玫瑰粉"><svg class="icon"><use href="#i-check"/></svg></button>
+              <button class="accent-swatch" data-accent="#b7e46d" style="--swatch:#b7e46d" aria-label="青柠绿"><svg class="icon"><use href="#i-check"/></svg></button>
+              <label class="accent-custom" title="自定义颜色">
+                <input type="color" id="accentColorInput" value="#8b7cff" aria-label="自定义强调色" />
+                <svg class="icon"><use href="#i-plus"/></svg>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="settings-panel" data-panel="layout">
+          <div class="setting-group">
+            <div class="setting-head"><div><h3>卡片密度</h3><p>选择更舒展或更紧凑的浏览节奏</p></div></div>
+            <div class="segmented" role="radiogroup" aria-label="卡片密度">
+              <button class="segment is-active" data-density="comfortable">舒展</button>
+              <button class="segment" data-density="compact">紧凑</button>
+            </div>
+          </div>
+          <div class="setting-group">
+            <div class="setting-head"><div><h3>动效</h3><p>保留柔和的入场、悬浮与壁纸流动</p></div></div>
+            <label class="toggle-row">
+              <span><strong>界面动画</strong><small>关闭后减少所有非必要动效</small></span>
+              <input type="checkbox" id="animationsToggle" />
+              <span class="toggle-visual"></span>
+            </label>
+            <label class="toggle-row">
+              <span><strong>壁纸流动</strong><small>极光会缓慢地呼吸与漂移</small></span>
+              <input type="checkbox" id="wallpaperMotionToggle" />
+              <span class="toggle-visual"></span>
+            </label>
+          </div>
+          <div class="setting-group">
+            <div class="setting-head"><div><h3>内容显示</h3><p>控制卡片上的信息密度</p></div></div>
+            <label class="toggle-row">
+              <span><strong>显示网站描述</strong><small>隐藏后卡片会更加简洁</small></span>
+              <input type="checkbox" id="showDescriptionsToggle" />
+              <span class="toggle-visual"></span>
+            </label>
+            <label class="toggle-row">
+              <span><strong>显示网站标签</strong><small>在卡片底部展示标签小药丸</small></span>
+              <input type="checkbox" id="showTagsToggle" />
+              <span class="toggle-visual"></span>
+            </label>
+          </div>
+          <div class="setting-group">
+            <div class="setting-head"><div><h3>侧边栏</h3><p>随时收起，获得更沉浸的浏览视野</p></div></div>
+            <label class="toggle-row">
+              <span><strong>收起侧边栏</strong><small>只保留图标导航（⌘B）</small></span>
+              <input type="checkbox" id="sidebarToggle" />
+              <span class="toggle-visual"></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="settings-panel" data-panel="data">
+          <div class="setting-group">
+            <div class="setting-head"><div><h3>本地备份</h3><p>导出为 JSON，或在其他浏览器中导入</p></div></div>
+            <div class="data-actions">
+              <button class="data-action" id="exportData"><span class="data-action-icon"><svg class="icon"><use href="#i-download"/></svg></span><span><strong>导出数据</strong><small>包含网站、分类与全部设置</small></span><svg class="icon data-arrow"><use href="#i-arrow-up-right"/></svg></button>
+              <button class="data-action" id="importData"><span class="data-action-icon"><svg class="icon"><use href="#i-upload"/></svg></span><span><strong>导入数据</strong><small>从备份文件恢复</small></span><svg class="icon data-arrow"><use href="#i-arrow-up-right"/></svg></button>
+              <input type="file" id="importFile" accept="application/json,.json" hidden />
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <div class="setting-head">
+              <div><h3>跨设备云同步</h3><p>通过私有 GitHub Gist 在所有设备间保持数据一致</p></div>
+              <span class="beta-badge">BETA</span>
+            </div>
+            <div class="sync-card" id="syncCard">
+              <div class="sync-card-head">
+                <span class="sync-status-icon" id="syncStatusIcon"><svg class="icon"><use href="#i-cloud"/></svg></span>
+                <div class="sync-card-copy">
+                  <strong id="syncStatusTitle">尚未连接</strong>
+                  <small id="syncStatusDetail">数据只保存在当前浏览器中</small>
+                </div>
+                <span class="sync-state-pill" id="syncStatePill">本地</span>
+              </div>
+              <div id="syncDisconnected">
+                <p class="sync-help">粘贴一个仅勾选 <code>gist</code> 权限的 GitHub 令牌。令牌与数据只会发送到 GitHub，并保存在本机浏览器中。</p>
+                <div class="sync-token-row">
+                  <div class="password-field">
+                    <input type="password" id="syncToken" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off" spellcheck="false" aria-label="GitHub 令牌" />
+                    <button class="icon-btn" id="toggleToken" aria-label="显示令牌"><svg class="icon"><use href="#i-eye"/></svg></button>
+                  </div>
+                  <button class="btn btn-primary" id="syncConnectBtn">连接</button>
+                </div>
+                <a class="sync-link" href="https://github.com/settings/tokens/new?scopes=gist&description=Orbit%20Nav" target="_blank" rel="noopener">创建一个 gist 令牌 <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+              </div>
+              <div id="syncConnected" hidden>
+                <div class="sync-connected-row">
+                  <span class="sync-user"><svg class="icon"><use href="#i-github"/></svg><span id="syncUsername">@github</span></span>
+                  <span class="sync-time" id="syncLastTime">刚刚同步</span>
+                </div>
+                <div class="sync-actions">
+                  <button class="btn btn-soft" id="syncPull"><svg class="icon"><use href="#i-download"/></svg>拉取云端</button>
+                  <button class="btn btn-soft" id="syncPush"><svg class="icon"><use href="#i-upload"/></svg>上传本地</button>
+                </div>
+                <label class="toggle-row compact-toggle">
+                  <span><strong>自动上传更改</strong><small>每次编辑后自动更新云端备份</small></span>
+                  <input type="checkbox" id="autoSyncToggle" checked />
+                  <span class="toggle-visual"></span>
+                </label>
+                <button class="text-danger-btn" id="syncDisconnect"><svg class="icon"><use href="#i-log-out"/></svg>断开云同步</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <div class="setting-head"><div><h3>存储空间</h3><p>本地数据占用情况</p></div></div>
+            <div class="storage-meter"><span id="storageBar"></span></div>
+            <div class="storage-meta"><span id="storageUsed">约 0 KB</span><span>浏览器上限约 5 MB</span></div>
+          </div>
+
+          <div class="setting-group danger-zone">
+            <div class="setting-head"><div><h3>重置所有数据</h3><p>恢复到初始示例内容，此操作不可撤销</p></div></div>
+            <button class="btn btn-danger-outline" id="resetData"><svg class="icon"><use href="#i-rotate"/></svg>恢复初始状态</button>
+          </div>
+        </section>
+      </div>
+    </aside>
+  </div>
+
+  <div class="palette-layer" id="paletteLayer" aria-hidden="true">
+    <div class="palette-backdrop" data-close-palette="paletteLayer"></div>
+    <div class="palette" role="dialog" aria-modal="true" aria-label="命令面板">
+      <div class="palette-search">
+        <svg class="icon"><use href="#i-search"/></svg>
+        <input id="paletteInput" type="text" placeholder="搜索网站，或输入网址…" autocomplete="off" spellcheck="false" aria-label="命令面板搜索" />
+        <kbd>ESC</kbd>
+      </div>
+      <div class="palette-results" id="paletteResults"></div>
+      <div class="palette-foot">
+        <span><kbd>↑</kbd><kbd>↓</kbd> 选择</span>
+        <span><kbd>↵</kbd> 打开</span>
+        <span><kbd>⌘</kbd><kbd>K</kbd> 随时唤起</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-layer" id="confirmModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="confirmModal"></div>
+    <div class="modal confirm-modal" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmText">
+      <div class="confirm-icon" id="confirmIcon"><svg class="icon"><use href="#i-shield"/></svg></div>
+      <h2 id="confirmTitle">确认操作</h2>
+      <p id="confirmText">确定要继续吗？</p>
+      <div class="confirm-actions">
+        <button class="btn btn-ghost" id="confirmCancel">取消</button>
+        <button class="btn btn-primary" id="confirmOk">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-layer" id="shortcutModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="shortcutModal"></div>
+    <div class="modal shortcut-modal" role="dialog" aria-modal="true" aria-labelledby="shortcutTitle">
+      <div class="modal-head">
+        <div><span class="modal-eyebrow">SHORTCUTS</span><h2 id="shortcutTitle">键盘快捷键</h2></div>
+        <button class="icon-btn" data-close="shortcutModal" aria-label="关闭"><svg class="icon"><use href="#i-x"/></svg></button>
+      </div>
+      <div class="shortcut-list">
+        <div><span>打开命令面板</span><span><kbd>⌘</kbd><kbd>K</kbd></span></div>
+        <div><span>聚焦搜索</span><span><kbd>/</kbd></span></div>
+        <div><span>添加网站</span><span><kbd>N</kbd></span></div>
+        <div><span>切换侧边栏</span><span><kbd>⌘</kbd><kbd>B</kbd></span></div>
+        <div><span>关闭弹窗</span><span><kbd>Esc</kbd></span></div>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="wallpaperFile" accept="image/*" hidden />
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
